@@ -1,6 +1,7 @@
 import { DefaultUi, Player, Youtube } from "@vime/react";
 import {
   CaretRight,
+  CircleNotch,
   DiscordLogo,
   FileArrowDown,
   Image,
@@ -52,7 +53,12 @@ export function Video({ lessonSlug }: VideoProps) {
   if (!data) {
     return (
       <div className="flex-1">
-        <p> Carregando... </p>
+        <div className="flex flex-col h-full items-center justify-center">
+          <CircleNotch size={120} className="animate-spin" />
+          <span className="text-gray-100 text-xl mt-6">
+            Aguarde um momento enquanto preparamos tudo...
+          </span>
+        </div>
       </div>
     );
   }
