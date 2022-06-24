@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export function Header({ changeSidebarVisibility }: HeaderProps) {
-  const [icon, setIcon] = useState("open");
+  const [icon, setIcon] = useState("close");
 
   function handleMenuClick(event: any): void {
     if (icon === "open") {
