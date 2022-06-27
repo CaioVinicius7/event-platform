@@ -1,4 +1,5 @@
 import { Logo } from "../components/Logo";
+import imgUrl from "../assets/code-mockup.png";
 
 export function Subscribe() {
   return (
@@ -48,11 +49,7 @@ export function Subscribe() {
         </div>
       </div>
 
-      <img
-        src="/src/assets/code-mockup.png"
-        alt="code-mockup"
-        className="mt-10"
-      />
+      <img src={imgUrl} alt="code-mockup" className="mt-10" />
     </div>
   );
 }
