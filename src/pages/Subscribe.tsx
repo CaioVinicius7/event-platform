@@ -32,7 +32,7 @@ export function Subscribe() {
         <div className="flex flex-col items-center lg:items-start justify-center max-w-[640px] lg:max-w-[610px] text-center md:text-start md:pr-1">
           <Logo />
 
-          <h1 className="mt-8 text-[2.5rem] leading-tight px-4 sm:px-0">
+          <h1 className="mt-8 text-[1.8rem] sm:text-[2.5rem] leading-tight px-4 sm:px-0">
             Construa uma
             <strong className="text-blue-500"> aplicação completa</strong>, do
             zero, com <strong className="text-blue-500"> React </strong>
