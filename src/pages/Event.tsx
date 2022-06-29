@@ -20,7 +20,7 @@ export function Event() {
       <Header changeSidebarVisibility={changeSidebarVisibility} />
       <main className="flex flex-1">
         {slug ? (
-          <Video lessonSlug={slug} />
+          <Video lessonSlug={slug} sidebarVisibility={visibility} />
         ) : (
           <div className="flex-1">
             <div className="flex flex-col h-full items-center justify-center">

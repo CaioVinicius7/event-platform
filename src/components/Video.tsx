@@ -7,27 +7,31 @@ import {
   Image,
   Lightning
 } from "phosphor-react";
+import classNames from "classnames";
 
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
 
 interface VideoProps {
   lessonSlug: string;
+  sidebarVisibility: "hidden" | "absolute";
 }
 
-export function Video({ lessonSlug }: VideoProps) {
+export function Video({ lessonSlug, sidebarVisibility }: VideoProps) {
   const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: lessonSlug
     }
   });
 
+  const sidebarIsVisible = sidebarVisibility === "absolute" ? true : false;
+
   if (!data || !data.lesson) {
     return (
       <div className="flex-1">
         <div className="flex flex-col h-full items-center justify-center">
           <CircleNotch size={120} className="animate-spin" />
-          <span className="text-gray-100 text-xl mt-6">
+          <span className="text-gray-100 text-xl mt-6 text-center">
             Aguarde um momento enquanto preparamos tudo...
           </span>
         </div>
@@ -36,7 +40,11 @@ export function Video({ lessonSlug }: VideoProps) {
   }
 
   return (
-    <div className="flex-1">
+    <div
+      className={classNames("flex-1", {
+        "hidden bg-gray-700": sidebarIsVisible
+      })}
+    >
       <div className="bg-black flex justify-center">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
           <Player>
