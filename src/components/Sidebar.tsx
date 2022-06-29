@@ -1,10 +1,12 @@
+import classNames from "classnames";
 import { Calendar } from "phosphor-react";
+
 import { useGetLessonsQuery } from "../graphql/generated";
 
 import { Lesson } from "./Lesson";
 
 interface SidebarProps {
-  visibility: "hidden" | "absolute";
+  visibility: boolean;
 }
 
 export function Sidebar({ visibility }: SidebarProps) {
@@ -32,7 +34,13 @@ export function Sidebar({ visibility }: SidebarProps) {
 
   return (
     <aside
-      className={`${visibility} w-full lg:relative lg:block lg:w-[348px] bg-gray-700 p-6 border-l border-gray-600`}
+      className={classNames(
+        " w-full lg:relative lg:block lg:w-[348px] bg-gray-700 p-6 border-l border-gray-600",
+        {
+          absolute: visibility,
+          hidden: !visibility
+        }
+      )}
     >
       <span className="font-bold text-2xl pb-6 mb-6 border-b border-gray-500 block">
         Cronograma de aulas

@@ -14,7 +14,7 @@ import { useGetLessonBySlugQuery } from "../graphql/generated";
 
 interface VideoProps {
   lessonSlug: string;
-  sidebarVisibility: "hidden" | "absolute";
+  sidebarVisibility: boolean;
 }
 
 export function Video({ lessonSlug, sidebarVisibility }: VideoProps) {
@@ -24,11 +24,13 @@ export function Video({ lessonSlug, sidebarVisibility }: VideoProps) {
     }
   });
 
-  const sidebarIsVisible = sidebarVisibility === "absolute" ? true : false;
-
   if (!data || !data.lesson) {
     return (
-      <div className="flex-1">
+      <div
+        className={classNames("flex-1", {
+          "hidden bg-gray-700": sidebarVisibility
+        })}
+      >
         <div className="flex flex-col h-full items-center justify-center">
           <CircleNotch size={120} className="animate-spin" />
           <span className="text-gray-100 text-xl mt-6 text-center">
@@ -42,7 +44,7 @@ export function Video({ lessonSlug, sidebarVisibility }: VideoProps) {
   return (
     <div
       className={classNames("flex-1", {
-        "hidden bg-gray-700": sidebarIsVisible
+        "hidden bg-gray-700": sidebarVisibility
       })}
     >
       <div className="bg-black flex justify-center">
